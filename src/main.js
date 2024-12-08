@@ -6,7 +6,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const searchForm = document.getElementById('search-form');
 const galleryElement = document.querySelector('.gallery');
-const loadMoreButton = document.getElementById('load-more');
+
 const loadingIndicator = document.getElementById('loading-indicator');
 let page = 1;
 
@@ -34,14 +34,13 @@ searchForm.addEventListener('submit', async (e) => {
   try {
     const data = await fetchImages(query, page);
     hideLoader();
-    if (data.hits.length === 0) {
-      iziToast.error({ message: 'Sorry, no images found. Please try again!' });
-      
-    } else {
-      renderGallery(data.hits, galleryElement, true);
-      page += 1;
-      
-    }
+   if (!data.hits || data.hits.length === 0) {
+    iziToast.error({ message: 'Sorry, no images found. Please try again!' });
+} else {
+    renderGallery(data.hits, galleryElement, true);
+    page += 1;
+}
+
   } catch (error) {
     hideLoader();
     iziToast.error({ message: 'Error fetching images. Please try again!' });
