@@ -101,13 +101,6 @@ img {
   flex-shrink: 0;
   height: auto;
 }
-#load-more {
-  border-radius: 8px;
-  padding: 8px 16px;
-  width: 100px;
-  height: 40px;
-  background: #4e75ff;
-}
 
 /* loader */
 
