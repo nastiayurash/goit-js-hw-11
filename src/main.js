@@ -38,7 +38,7 @@ searchForm.addEventListener('submit', async (e) => {
     iziToast.error({ message: 'Sorry, no images found. Please try again!' });
 } else {
     renderGallery(data.hits, galleryElement, true);
-    page += 1;
+    
 }
 
   } catch (error) {
